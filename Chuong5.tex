@@ -1,0 +1,199 @@
+\chapter{Kết quả thực nghiệm}
+\section{Dữ liệu thực nghiệm}
+Thực nghiệm được tiến hành trên 5 khu vực trích xuất từ địa hình thực tế của Việt Nam. Chi tiết của các địa hình được mô tả bên dưới 
+\BlankLine
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|l|l|X|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Dữ liệu}} & \multicolumn{1}{c|}{\textbf{Khu vực thực tế}} & \multicolumn{1}{c|}{\textbf{Mô tả}}                                                                 \\ \hline
+        dem1 & Vũng Tàu                             & Thành phố nhiều tòa nhà với độ cao cân đối, có đồi núi, và một vùng biển nằm về một hướng  \\ \hline
+        dem3 & TP. HCM                           & Đồng bằng nhiều nhà cao tầng, ít sông                            \\ \hline
+        dem4 & Vĩnh Long                            & Ít nhà cửa, không đồi núi, kênh rạch nhiều đặc biệt có dòng sông lớn mekong                \\ \hline
+        dem5 & Lâm Đồng                             & Vùng đồi núi nhiều, ít nhà cửa, có núi cao, có sông xen kẽ                                \\ \hline
+        dem6 & Cao Nguyên                           & Vùng có nhiều đồi núi có độ cao tăng dần, ít nhà cửa, không sông hồ                        \\ \hline
+        % dem7 & Đà Nẵng                              & Vùng ít nhà cửa, núi cao tiếp giáp vùng biển, vùng biển chủ yếu                            \\ \hline
+        % dem8 & Hà Nội                               & Vùng nhiều nhà cao , có ao hồ                                                              \\ \hline
+        % dem9 & Hạ Long                              & Vùng biển có nhiều đảo nhỏ độ cao khác nhau, không có nhà                                  \\ \hline
+        % dem10 & Tây Bắc                             & Vùng thung lũng, thấp ở giữa và cao dần về hai bên                                         \\ \hline
+    \end{tabularx}
+    \caption{Mô tả địa hình thực nghiệm}
+\end{table}
+
+Thông số chung của các bộ dữ liệu:
+\begin{itemize}
+    \item Khu vực cảm  biến A là miền trong không gian 3 chiều với kích thước dài rộng là 200x200, chiều cao và sâu không hạn chế.
+    \item Số sensor: 40  
+    \item Sensor chôn sâu dưới mặt đất 10m
+    \item Số vị trí khả thi đặt relay: 40 
+    \item Vị trí đặt relay cao hơn mặt đất 1m
+\end{itemize}
+Với mỗi khu vực trên, các bộ dữ liệu về vị trí của sensors và relays được sinh ngẫu nhiên theo phân phối chuẩn. Mỗi bộ này có bán kính truyền thông của sensors và relays là đống nhất, các thông số bán kính truyền thông được thử nghiệm: 25, 30, 45, 50.
+
+Mô tả chi tiết các bộ dữ liệu 
+\begin{table}[H]
+    \begin{tabularx}{\linewidth}{|X |l |l|X |l |l|}
+    \hline
+    \multicolumn{1}{|c|}{Bộ dữ liệu} & \multicolumn{1}{c|}{Địa hình} & Bán kính & \multicolumn{1}{c|}{Bộ dữ liệu} & Địa hình & Bán kính \\ \hline
+    uu-dem1\_r25                                          & dem1                                                  & 25       & uu-dem4\_r45                                         & dem4     & 45       \\ \hline
+    uu-dem1\_r30                                          & dem1                                                  & 30       & uu-dem4\_r50                                         & dem4     & 50       \\ \hline
+    uu-dem1\_r45                                          & dem1                                                  & 45       & uu-dem5\_r25                                         & dem5     & 25       \\ \hline
+    uu-dem1\_r50                                          & dem1                                                  & 50       & uu-dem5\_r30                                         & dem5     & 30       \\ \hline
+    uu-dem3\_r25                                          & dem3                                                  & 25       & uu-dem5\_r45                                         & dem5     & 45       \\ \hline
+    uu-dem3\_r30                                          & dem3                                                  & 30       & uu-dem5\_r50                                         & dem5     & 50       \\ \hline
+    uu-dem3\_r45                                          & dem3                                                  & 45       & uu-dem6\_r25                                         & dem6     & 25       \\ \hline
+    uu-dem3\_r50                                          & dem3                                                  & 50       & uu-dem6\_r30                                         & dem6     & 30       \\ \hline
+    uu-dem4\_r25                                          & dem4                                                  & 25       & uu-dem6\_r45                                         & dem6     & 45       \\ \hline
+    uu-dem4\_r30                                          & dem4                                                  & 30       & uu-dem6\_r50                                         & dem6     & 50       \\ \hline
+    \end{tabularx}
+    \caption{Mô tả các bộ dữ liệu}
+\end{table}
+
+
+
+\section{Nội dung thực nghiệm}
+\textbf{Kiểm chứng hàm mục tiêu}
+
+Do đã đưa hai mục tiêu ban đầu về một hàm mục tiêu mới với đầu ra là một số thực duy nhất, ta kiểm tra liệu hàm mục tiêu có hoạt động đúng như mong muốn hay không bằng cách thay đổi $\alpha$ và so sánh số relay cần sử dụng cũng như năng lượng tiêu hao. Thử nghiệm với hai giá trị của $\alpha$: 0.2 và 0.5.
+
+\textbf{Kiểm tra kết quả}
+
+Trước tiên, để thuận tiện cho việc kiểm chứng kết quả lời giải, tiến hành cài đặt mô hình và giải bài toán quy hoạch nguyên nới lỏng bằng thư viện PuLP. Đối với các thuật toán metaheuristics đã đề xuất, mỗi bộ dữ liệu sẽ được chạy $N$ lần để khảo sát độ ổn định của thuật toán. Kết quả được đánh giá bằng công thức \ref{obj_func} đã nêu trong mô hình bài toán với $\alpha$ là 0.5.
+
+Các tham số cài đặt như sau:
+
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{|X|X|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Tham số}} & \multicolumn{1}{c|}{\textbf{Giá trị}}                    \\ \hline
+        Số lần chạy 1 bộ dữ liệu  &  20                                                 \\ \hline
+        Kích thước quần thể  & 100                                                      \\ \hline
+        Số cá thể khởi tạo & 100                                                        \\ \hline
+        Số thế hệ & 100                                                                 \\ \hline
+        Số thế hệ dừng nếu không cải thiện kết quả & 30                                 \\ \hline
+        Tỉ lệ lai ghép & 0.8                                                            \\ \hline
+        Tỉ lệ đột biến   & 0.1                                                          \\ \hline
+    \end{tabularx}
+    \caption{Tham số cài thuật toán GAH}
+\end{table}
+
+Thuật toán LSMF cũng tương tự, chạy thử nghiệm 20 lần với mỗi bộ dữ liệu, ngoài ra không có tham số nào thêm mà được tiến hành như đề xuất đã nêu.
+% \begin{table}[H]
+%     \begin{tabularx}{\textwidth}{|X|X|}
+%         \hline
+%         \multicolumn{1}{|c|}{\textbf{Tham số}} & \multicolumn{1}{c|}{\textbf{Giá trị}}                    \\ \hline
+%         Số ứng cử viên tốt nhất xét trong 1 bước   &  20                                                 \\ \hline
+%         Kích thước quần thể  & 100                                                      \\ \hline
+%         Số cá thể khởi tạo & 100                                                        \\ \hline
+%         Số thế hệ & 100                                                                 \\ \hline
+%         Số thế hệ dừng nếu không cải thiện kết quả & 30                                 \\ \hline
+%         Tỉ lệ lai ghép & 0.8                                                            \\ \hline
+%         Tỉ lệ đột biến   & 0.1                                                          \\ \hline
+%     \end{tabularx}
+%     \caption{Tham số cài thuật toán LSMF}
+% \end{table}
+
+\section{Môi trường thực nghiệm}
+Chương trình thực nghiệm được cài đặt bằng ngôn ngữ Python3, chạy trên môi trường hệ điều hành Ubuntu 16.04.
+
+Thông số phần cứng 
+\begin{itemize}
+    \item Bộ vi xử lý: Intel core i7-2640M 2.8GHz
+    \item RAM: 4GB    
+\end{itemize}
+
+\section{Kết quả thực nghiệm}
+\subsection{Nghiệm lại hàm mục tiêu}
+Quan sát bảng \ref{check_obj_func} dễ dàng nhận thấy: khi tăng giá trị alpha, số relays giảm đi đáng kể và năng lượng tiêu hao lớn nhất trong mạng tăng lên, kết quả này hoàn toàn phù hợp với mục tiêu tối thiểu hóa đã đặt ra.
+
+
+\subsection{So sánh kết quả}
+Dựa vào bảng số liệu \ref{result_compare} và \ref{check_obj_func} có thể đưa ra một số nhận xét sau 
+\begin{itemize}
+    \item Hai đề xuất đưa ra đều có độ ổn định tương đối cao, độ lệch chuẩn chỉ rơi vào khoảng 2-3\%.
+    \item GAH đưa ra giá trị trung bình tốt hơn trong phần lớn các bộ dữ liệu, LSMF không có sự thay đổi lớn của số relays và năng lượng sử dụng. Có thể đưa ra phán đoán: mặc dù LSMF có pha 2 chính xác và tốt hơn pha 2 của GAH, tuy nhiên đối với hàm mục tiêu max-min, giải thuật di truyền mang lại hiệu quả tốt hơn tìm kiếm cục bộ.
+    \item GAH mang lại kết quả khá gần với LP, độ lệch lớn nhất khoảng 5\%.
+\end{itemize}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+
+
+\begin{table}[H]
+    \begin{tabular}{|l|l|l|l|l|l|l|l|}
+    \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{Bộ dữ liệu}} & \multicolumn{1}{c|}{\multirow{2}{*}{LP}} & \multicolumn{3}{c|}{GAH}                                                        & \multicolumn{3}{c|}{LSMF}                                                       \\ \cline{3-8} 
+    \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{}                    & \multicolumn{1}{c|}{Avg} & \multicolumn{1}{c|}{delta} & \multicolumn{1}{c|}{\%} & \multicolumn{1}{c|}{Avg} & \multicolumn{1}{c|}{delta} & \multicolumn{1}{c|}{\%} \\ \hline
+    uu-dem1\_r25                                & 0.16478                                  & 0.17514                  & 0.00352                    & 2.01\%                  & 0.19195                  & 0.00609                    & 3.48\%                  \\ \hline
+    uu-dem1\_r30                                & 0.16157                                  & 0.17075                  & 0.00378                    & 2.21\%                  & 0.18466                  & 0.00199                    & 1.17\%                  \\ \hline
+    uu-dem1\_r45                                & 0.15089                                  & 0.15578                  & 0.00126                    & 0.81\%                  & 0.15625                  & 0.00342                    & 2.20\%                  \\ \hline
+    uu-dem1\_r50                                & 0.14538                                  & 0.14891                  & 0.0005                     & 0.34\%                  & 0.1495                   & 0.00135                    & 0.91\%                  \\ \hline
+    uu-dem3\_r25                                & 0.16397                                  & 0.17355                  & 0.00468                    & 2.70\%                  & 0.20235                  & 0.00871                    & 5.02\%                  \\ \hline
+    uu-dem3\_r30                                & 0.15126                                  & 0.16074                  & 0.00147                    & 0.91\%                  & 0.16884                  & 0.00208                    & 1.29\%                  \\ \hline
+    uu-dem3\_r45                                & 0.14644                                  & 0.15034                  & 0.00162                    & 1.08\%                  & 0.15242                  & 0.00297                    & 1.98\%                  \\ \hline
+    uu-dem3\_r50                                & 0.14717                                  & 0.15096                  & 0.00061                    & 0.40\%                  & 0.15043                  & 0                          & 0.00\%                  \\ \hline
+    uu-dem4\_r25                                & 0.16909                                  & 0.18374                  & 0.00819                    & 4.46\%                  & 0.19043                  & 0.00527                    & 2.87\%                  \\ \hline
+    uu-dem4\_r30                                & 0.16308                                  & 0.1742                   & 0.00372                    & 2.14\%                  & 0.17941                  & 0.00348                    & 2.00\%                  \\ \hline
+    uu-dem4\_r45                                & 0.14613                                  & 0.14955                  & 0.00051                    & 0.34\%                  & 0.15382                  & 0.00371                    & 2.48\%                  \\ \hline
+    uu-dem4\_r50                                & 0.14521                                  & 0.14807                  & 0.00042                    & 0.28\%                  & 0.15087                  & 0.00245                    & 1.65\%                  \\ \hline
+    uu-dem5\_r25                                & 0.22698                                  & 0.23874                  & 0.00744                    & 3.12\%                  & 0.24675                  & 0.00085                    & 0.36\%                  \\ \hline
+    uu-dem5\_r30                                & 0.20753                                  & 0.21131                  & 0.00556                    & 2.63\%                  & 0.22241                  & 0                          & 0.00\%                  \\ \hline
+    uu-dem5\_r45                                & 0.14583                                  & 0.15045                  & 0.00278                    & 1.85\%                  & 0.15372                  & 0.0019                     & 1.26\%                  \\ \hline
+    uu-dem5\_r50                                & 0.14827                                  & 0.15348                  & 0.00153                    & 1.00\%                  & 0.15316                  & 0.00249                    & 1.62\%                  \\ \hline
+    uu-dem6\_r25                                & 0.17034                                  & 0.1849                   & 0.00487                    & 2.63\%                  & 0.17864                  & 0.004                      & 2.16\%                  \\ \hline
+    uu-dem6\_r30                                & 0.16502                                  & 0.17363                  & 0.00234                    & 1.35\%                  & 0.17304                  & 0.00356                    & 2.05\%                  \\ \hline
+    uu-dem6\_r45                                & 0.14755                                  & 0.15305                  & 0.00308                    & 2.01\%                  & 0.1556                   & 0.00231                    & 1.51\%                  \\ \hline
+    uu-dem6\_r50                                & 0.14265                                  & 0.14564                  & 0.00121                    & 0.83\%                  & 0.14579                  & 0                          & 0.00\%                  \\ \hline
+    \end{tabular}
+    \caption{Giá trị trung bình của hàm mục tiêu (Avg), độ lệch chuẩn ($\sigma$) và phần trăm độ lệch chuẩn so với trung bình}
+    \label{result_compare}
+\end{table}
+\begin{table}[]
+    \begin{tabular}{|l|l|l|l|l|l|}
+    \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{Bộ dữ liệu}} & \multicolumn{1}{c|}{\multirow{2}{*}{alpha}} & \multicolumn{2}{c|}{GAH}                                         & \multicolumn{2}{c|}{LSMF}                                        \\ \cline{3-6} 
+    \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{Số relays} & \multicolumn{1}{c|}{Năng lượng} & \multicolumn{1}{c|}{Số relays} & \multicolumn{1}{c|}{Năng lượng} \\ \hline
+    uu-dem1\_r25\_1                                & 0.5                                         & 8                              & 0.0013331765                    & 11                             & 0.0010920519                    \\ \hline
+    uu-dem1\_r25\_1                                & 0.2                                         & 13                             & 0.0009051732                    & 11                             & 0.0010570792                    \\ \hline
+    uu-dem1\_r30\_1                                & 0.5                                         & 8                              & 0.0012512912                    & 10                             & 0.0010489533                    \\ \hline
+    uu-dem1\_r30\_1                                & 0.2                                         & 13                             & 0.0008489333                    & 12                             & 0.0010489533                    \\ \hline
+    uu-dem1\_r45\_1                                & 0.5                                         & 6                              & 0.0014826324                    & 6                              & 0.0014229231                    \\ \hline
+    uu-dem1\_r45\_1                                & 0.2                                         & 11                             & 0.0008786272                    & 7                              & 0.0012304775                    \\ \hline
+    uu-dem1\_r50\_1                                & 0.5                                         & 5                              & 0.0016522127                    & 6                              & 0.0014162471                    \\ \hline
+    uu-dem1\_r50\_1                                & 0.2                                         & 10                             & 0.0008608718                    & 7                              & 0.0012219406                    \\ \hline
+    uu-dem3\_r25\_1                                & 0.5                                         & 10                             & 0.0010976094                    & 16                             & 0.0369235512                    \\ \hline
+    uu-dem3\_r25\_1                                & 0.2                                         & 13                             & 0.0008507759                    & 16                             & 0.0369235512                    \\ \hline
+    uu-dem3\_r30\_1                                & 0.5                                         & 6                              & 0.0016108836                    & 12                             & 0.0675616185                    \\ \hline
+    uu-dem3\_r30\_1                                & 0.2                                         & 12                             & 0.0008444439                    & 13                             & 0.0675616185                    \\ \hline
+    uu-dem3\_r45\_1                                & 0.5                                         & 6                              & 0.0014841436                    & 8                              & 0.0364361653                    \\ \hline
+    uu-dem3\_r45\_1                                & 0.2                                         & 14                             & 0.000704309                     & 9                              & 0.0360361253                    \\ \hline
+    uu-dem3\_r50\_1                                & 0.5                                         & 6                              & 0.0014027532                    & 7                              & 0.0230458458                    \\ \hline
+    uu-dem3\_r50\_1                                & 0.2                                         & 10                             & 0.0008983999                    & 8                              & 0.0220457458                    \\ \hline
+    uu-dem4\_r25\_1                                & 0.5                                         & 11                             & 0.0012854853                    & 9                              & 0.0016514833                    \\ \hline
+    uu-dem4\_r25\_1                                & 0.2                                         & 13                             & 0.0009532126                    & 11                             & 0.0009524756                    \\ \hline
+    uu-dem4\_r30\_1                                & 0.5                                         & 8                              & 0.0014852208                    & 9                              & 0.0011292257                    \\ \hline
+    uu-dem4\_r30\_1                                & 0.2                                         & 12                             & 0.0009969869                    & 9                              & 0.0012108436                    \\ \hline
+    uu-dem4\_r45\_1                                & 0.5                                         & 6                              & 0.0014127945                    & 5                              & 0.0018017176                    \\ \hline
+    uu-dem4\_r45\_1                                & 0.2                                         & 10                             & 0.0008804036                    & 9                              & 0.0010078737                    \\ \hline
+    uu-dem4\_r50\_1                                & 0.5                                         & 5                              & 0.001638039                     & 6                              & 0.0014027532                    \\ \hline
+    uu-dem4\_r50\_1                                & 0.2                                         & 10                             & 0.0008581889                    & 8                              & 0.0012010088                    \\ \hline
+    uu-dem5\_r25\_1                                & 0.5                                         & 10                             & 0.0022212617                    & 8                              & 0.0016682569                    \\ \hline
+    uu-dem5\_r25\_1                                & 0.2                                         & 12                             & 0.0018239786                    & 13                             & 0.0009512867                    \\ \hline
+    uu-dem5\_r30\_1                                & 0.5                                         & 8                              & 0.0021715956                    & 9                              & 0.0011969321                    \\ \hline
+    uu-dem5\_r30\_1                                & 0.2                                         & 8                              & 0.0021715956                    & 9                              & 0.0011970069                    \\ \hline
+    uu-dem5\_r45\_1                                & 0.5                                         & 6                              & 0.0014376261                    & 5                              & 0.0016621617                    \\ \hline
+    uu-dem5\_r45\_1                                & 0.2                                         & 11                             & 0.0008375661                    & 6                              & 0.0014127945                    \\ \hline
+    uu-dem5\_r50\_1                                & 0.5                                         & 5                              & 0.0016657784                    & 5                              & 0.001638039                     \\ \hline
+    uu-dem5\_r50\_1                                & 0.2                                         & 15                             & 0.0006490465                    & 7                              & 0.0012177708                    \\ \hline
+    uu-dem6\_r25\_1                                & 0.5                                         & 10                             & 0.0013721409                    & 11                             & 0.0022212617                    \\ \hline
+    uu-dem6\_r25\_1                                & 0.2                                         & 13                             & 0.0010308086                    & 12                             & 0.0018239786                    \\ \hline
+    uu-dem6\_r30\_1                                & 0.5                                         & 7                              & 0.0016516172                    & 9                              & 0.0021715956                    \\ \hline
+    uu-dem6\_r30\_1                                & 0.2                                         & 12                             & 0.0010592929                    & 9                              & 0.0021715956                    \\ \hline
+    uu-dem6\_r45\_1                                & 0.5                                         & 5                              & 0.0017813233                    & 5                              & 0.0017459274                    \\ \hline
+    uu-dem6\_r45\_1                                & 0.2                                         & 11                             & 0.0008181862                    & 8                              & 0.0012001226                    \\ \hline
+    uu-dem6\_r50\_1                                & 0.5                                         & 5                              & 0.0016425859                    & 5                              & 0.0016657784                    \\ \hline
+    uu-dem6\_r50\_1                                & 0.2                                         & 10                             & 0.0009250924                    & 7                              & 0.0012271877                    \\ \hline
+    \end{tabular}
+    \caption{Nghiệm lại hàm mục tiêu}
+    \label{check_obj_func}
+\end{table}

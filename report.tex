@@ -1,0 +1,77 @@
+\documentclass[a4paper, 12pt, fleqn]{report}
+\usepackage[utf8]{vietnam}
+\usepackage{amsmath}
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{geometry}
+\usepackage{tocbibind}
+\usepackage[toc,page]{appendix}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{acronym}
+
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\setlength\parindent{0pt}
+\usepackage[ruled]{algorithm2e}
+
+\usepackage {fancybox} 
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{algpseudocode}
+% \usepackage{algpascal}
+% \usepackage{algorithmicx}
+
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+\usepackage{scrextend}
+\changefontsizes{13pt}
+
+\usepackage{sectsty}
+\chaptertitlefont{\LARGE}
+
+\geometry{
+    top = 20mm,
+    bottom = 20mm,
+    left = 35mm,
+    right = 25mm
+}
+% \author{Sinh viên: Nguyễn Duy Mạnh}
+
+% \title{ĐỒ ÁN TỐT NGHIỆP}
+
+\begin{document}
+% \maketitle
+\include{title}
+\pagenumbering{gobble}
+\include{phieu_giao_nhiem_vu}
+\include{tom_tat_do_an}
+% \include{abstract_of_thesis}
+% \include{loi_noi_dau}
+\include{loi_cam_on}
+
+\tableofcontents
+
+\listoffigures
+\listoftables
+\include{tu_viet_tat}
+
+\include{Chuong1}
+\include{Chuong2}
+\include{Chuong3}
+\include{Chuong4}
+\include{Chuong5}
+\include{ket_luan}
+\include{tai_lieu_tham_khao}
+\include{phu_luc}
+\end{document}
